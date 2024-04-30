@@ -1,5 +1,5 @@
 const express = require('express');
-const nysql = require('mysql2');
+const mysql = require('mysql2');
 const path = require("path");
 const fs = require("fs");
 
@@ -27,7 +27,7 @@ function getElokuvat(res, kysely){
 
         let vastaus = '';
         for (let rivi of rivit){
-            vastaus += ``;
+            vastaus += `${rivi.actor_id} ${rivi.first_name} ${rivi.last_name} ${rivi.last_update}`;
         }
         res.send(vastaus)
     });
@@ -35,7 +35,7 @@ function getElokuvat(res, kysely){
 }
 
 app.get('/elokuvat', (req, res) => {
-    const kysely = ``;
+    const kysely = `SELECT * FROM actor`;
     getElokuvat(res, kysely);
 });
 
