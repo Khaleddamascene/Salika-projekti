@@ -1,24 +1,47 @@
 const express = require('express');
-const mysql = require('mysql');
+const nysql = require('mysql2');
+const path = require("path");
+const fs = require("fs");
+
 
 const {port, host} = require('./config.json');
 const dbconfig = require('./dbconfig.json');
-const { appendFile } = require('fs');
-
+const {get} = require('http');
 
 const app = express();
+app.use("/inc", express.static("includes"));
+app.set('view engine', 'ejs');
+app.set('view', path.join(__dirname, 'sivupohjat'));
+
 app.use(express.json());
+app.use(express.urlencoded({extended: true}));
+
+function getElokuvat(res, kysely){
+    const connection = mysql.createConnection(dbconfig);
+    connection.connect();
+    connection.query(kysely,
+    (err, rivit, kentat) => {
+        if (err) {
+            throw err;
+        }
+
+        let vastaus = '';
+        for (let rivi of rivit){
+            vastaus += ``;
+        }
+        res.send(vastaus)
+    });
+    connection.end();
+}
+
+app.get('/elokuvat', (req, res) => {
+    const kysely = ``;
+    getElokuvat(res, kysely);
+});
+
+app.listen(port, host, () => {console.log('Sakilapalvelin kuuntelee.......')})
 
 
-
-
-
-
-
-
-
-
-app.listen(port, host, () => {console.log('Sakilapalvelin kuuntelee......')});
 
 /*
 
