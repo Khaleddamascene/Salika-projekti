@@ -27,7 +27,7 @@ function getElokuvat(res, kysely){
 
         let vastaus = '';
         for (let rivi of rivit){
-            vastaus += `${rivi.actor_id} ${rivi.first_name} ${rivi.last_name} ${rivi.last_update}`;
+            vastaus += `${rivi.film_id} ${rivi.title} ${rivi.description} ${rivi.release_year} ${rivi.rating} `;
         }
         res.send(vastaus)
     });
@@ -35,7 +35,7 @@ function getElokuvat(res, kysely){
 }
 
 app.get('/elokuvat', (req, res) => {
-    const kysely = `SELECT * FROM actor`;
+    const kysely = `SELECT * FROM film`;
     getElokuvat(res, kysely);
 });
 
