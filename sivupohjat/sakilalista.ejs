@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+    <meta charset="UTF-8">
+    <title>Listasovellus</title>
+</head>
+<body>
+    <h1>Elokuvat</h1>
+    <% if(elokuvat.length > 0) { %>
+        <table>
+            <% for(let elokuva of elokuvat) { %>
+                <tr>
+                    <td><%= elokuva.film_id %></td>
+                    <td><%= elokuva.title %></td>
+                    <td><%= elokuva.description %></td>
+                    <td><%= elokuva.release_year %></td>
+                    <td><%= elokuva.rating %></td>
+                </tr>
+            <% } %>
+        </table>
+    <% } else {%>
+        <p>Lista on tyhjä.</p>
+    <% } %>
+</body>
+</html>

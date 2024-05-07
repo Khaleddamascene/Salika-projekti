@@ -11,7 +11,7 @@ const {get} = require('http');
 const app = express();
 app.use("/inc", express.static("includes"));
 app.set('view engine', 'ejs');
-app.set('view', path.join(__dirname, 'sivupohjat'));
+app.set('views', path.join(__dirname, 'sivupohjat'));
 
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
@@ -26,10 +26,9 @@ function getElokuvat(res, kysely){
         }
 
         let vastaus = '';
-        for (let rivi of rivit){
-            vastaus += `${rivi.film_id} ${rivi.title} ${rivi.description} ${rivi.release_year} ${rivi.rating} `;
-        }
-        res.send(vastaus)
+        res.render('sakilalista', {
+            elokuvat: rivit
+        });
     });
     connection.end();
 }
@@ -40,6 +39,9 @@ app.get('/elokuvat', (req, res) => {
 });
 
 app.listen(port, host, () => {console.log('Sakilapalvelin kuuntelee.......')})
+
+
+
 
 
 

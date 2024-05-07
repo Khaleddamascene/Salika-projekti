@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/inc/styles.css">
+</head>
+<body>
+    <header>
+        <h1><%= otsikko%></h1>
+        <ul>
+            <li><a href="/elokuvat">Elokuvat</a></li>
+        </ul>
+        <form id="form-hae">
+            <input type="text"
+            placeholder="Haku....."
+            name="hakutermi"
+            id="hakutermi"
+            required
+            />
+            <button type="submit">HAE!</button>
+        </form>
+    </header>
+</body>
+</html>
