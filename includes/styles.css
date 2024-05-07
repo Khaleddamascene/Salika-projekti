@@ -27,7 +27,7 @@ table {
     border-collapse: collapse;
     border-radius: 8px;
 }
- 
+
 th,
 td {
     text-align: left;
@@ -35,26 +35,26 @@ td {
     border: 1px solid darkgrey;
     color: black;
 }
- 
+
 th {
     padding: 8px 10px;
     height: 48px;
     background-color: #808e9b;
 }
- 
+
 td {
     padding: 6px 8px;
     height: 40px;
 }
- 
+
 a:hover {
     background-color: #555;
 }
- 
+
 a:active {
     background-color: black;
 }
- 
+
 a:visited {
     background-color: #ccc;
 }

@@ -13,6 +13,8 @@ app.use("/inc", express.static("includes"));
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'sivupohjat'));
 
+
+
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 
@@ -37,6 +39,17 @@ app.get('/elokuvat', (req, res) => {
     const kysely = `SELECT * FROM film`;
     getElokuvat(res, kysely);
 });
+
+app.get('/hakutulos', (req, res) => {
+    let nimi = req.query.nimi;
+    const kysely = `SELECT * FROM film WHERE title like '%${nimi}%'`;
+    getElokuvat(res, kysely);
+});
+
+
+
+
+
 
 app.listen(port, host, () => {console.log('Sakilapalvelin kuuntelee.......')})
 

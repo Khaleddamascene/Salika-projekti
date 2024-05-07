@@ -3,11 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <title>Listasovellus</title>
+    <link rel="stylesheet" href="inc/styles.css">
 </head>
 <body>
     <h1>Elokuvat</h1>
     <% if(elokuvat.length > 0) { %>
         <table>
+            <tr>
+                <th>Film_id</th>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Release_year</th>
+                <th>Rating</th>
+                <th></th>
+            </tr>
             <% for(let elokuva of elokuvat) { %>
                 <tr>
                     <td><%= elokuva.film_id %></td>
